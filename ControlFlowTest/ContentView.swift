@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+  @ObservedObject var viewModel = ContentViewModel()
+  
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+      VStack {
+        Text("count: \(viewModel.count) ")
+        Button("Reset", action:{
+          viewModel.reset()
+        })
+      }
+      .padding()
+      .onAppear{
+        viewModel.viewAppear()
+      }
+      .onDisappear{
+        viewModel.viewDisappear()
+      }
     }
 }
 
