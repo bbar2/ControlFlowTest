@@ -8,12 +8,8 @@
 import SwiftUI
 
 class PolyViewModel {
-  let polyPoints = 6
-  // View coordinate system: (0,0) in upper left; (1,1) in lower right
-  let centerOfRotation:CGPoint = CGPoint(x:0.5, y:0.5)
-  let polyRadius = 0.45
-  var definedShape :[CGPoint] = []
-  var rotatedShape :[CGPoint] = []
+  var polyPoints:Int
+  
   var angle:Angle {
     get { rotateAngle }
     set (newAngle) {
@@ -21,9 +17,18 @@ class PolyViewModel {
       rotate()
     }
   }
+
   private var rotateAngle:Angle = Angle(degrees:0.0)
 
-  init() {
+  // View coordinate system: (0,0) in upper left; (1,1) in lower right
+  private let centerOfRotation:CGPoint = CGPoint(x:0.5, y:0.5)
+  private let polyRadius = 0.45
+  private var definedShape :[CGPoint] = []
+  var rotatedShape :[CGPoint] = []
+
+  init(numPoints:Int) {
+    polyPoints = numPoints
+    
     // init unrotated polygon in center of view.
     let dAngle:Angle = Angle(degrees:360.0 / Double(polyPoints))
     for i in 0..<polyPoints {
@@ -41,23 +46,23 @@ class PolyViewModel {
   private func rotate() {
 
     // Move centerOfRotation to origin
-    var moveToOrigin:[CGPoint] = Array(repeating: CGPoint(x:0.0, y:0.0), count: polyPoints)
+    var movedToOrigin:[CGPoint] = Array(repeating: CGPoint(x:0.0, y:0.0), count: polyPoints)
     for i in 0..<polyPoints {
-      moveToOrigin[i].x = definedShape[i].x - centerOfRotation.x
-      moveToOrigin[i].y = definedShape[i].y - centerOfRotation.y
+      movedToOrigin[i].x = definedShape[i].x - centerOfRotation.x
+      movedToOrigin[i].y = definedShape[i].y - centerOfRotation.y
     }
 
     // Rotate around origin
-    var rotateAtOrigin:[CGPoint] = Array(repeating: CGPoint(x:0.0, y:0.0), count: polyPoints)
+    var rotatedAtOrigin:[CGPoint] = Array(repeating: CGPoint(x:0.0, y:0.0), count: polyPoints)
     for i in 0..<polyPoints {
-      rotateAtOrigin[i].x = CGFloat(cos(rotateAngle.radians)) * moveToOrigin[i].x - CGFloat(sin(rotateAngle.radians)) * moveToOrigin[i].y
-      rotateAtOrigin[i].y = CGFloat(sin(rotateAngle.radians)) * moveToOrigin[i].x + CGFloat(cos(rotateAngle.radians)) * moveToOrigin[i].y
+      rotatedAtOrigin[i].x = CGFloat(cos(rotateAngle.radians)) * movedToOrigin[i].x - CGFloat(sin(rotateAngle.radians)) * movedToOrigin[i].y
+      rotatedAtOrigin[i].y = CGFloat(sin(rotateAngle.radians)) * movedToOrigin[i].x + CGFloat(cos(rotateAngle.radians)) * movedToOrigin[i].y
     }
     
     // Move origin back to centerOfRotation
     for i in 0..<polyPoints {
-      rotatedShape[i].x = rotateAtOrigin[i].x + centerOfRotation.x
-      rotatedShape[i].y = rotateAtOrigin[i].y + centerOfRotation.y
+      rotatedShape[i].x = rotatedAtOrigin[i].x + centerOfRotation.x
+      rotatedShape[i].y = rotatedAtOrigin[i].y + centerOfRotation.y
     }
   }
   

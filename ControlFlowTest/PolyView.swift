@@ -10,13 +10,17 @@ import SwiftUI
 struct PolyView: View {
   var polyAngle:Angle
   var polyColor:Color
-  var polyPoints:Int = 6
-  var polyViewModel = PolyViewModel()
+  var pointCount:Int
 
   var body: some View {
+    // I'd rather polyViewModel be outside of body scope, but can't figure out how
+    // to pass in the pointCount when outside of body scope -- without moving
+    // the initialization (construction) outside of PolyViewModel.init().
+    let polyViewModel = PolyViewModel(numPoints: pointCount)
+    
     GeometryReader { geometry in
       Path { path in
-        polyViewModel.angle = polyAngle // setter rotates points
+        polyViewModel.angle = polyAngle // angle set function rotates points
 
         let scale:CGFloat = min(geometry.size.width, geometry.size.height)
 
@@ -47,7 +51,10 @@ struct PolyView: View {
 
 struct PolyView_Previews: PreviewProvider {
     static var previews: some View {
-      PolyView(polyAngle: Angle(degrees:0.0),
-               polyColor: .blue)
+      Group {
+        PolyView(polyAngle: Angle(degrees:0.0),
+                 polyColor: .blue,
+                 pointCount: 8)
+      }
     }
 }
