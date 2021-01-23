@@ -16,6 +16,14 @@ struct ContentView: View {
         Button("Reset", action:{
           viewModel.reset()
         })
+        PolyView(polyAngle: viewModel.poly1Angle,
+                 polyColor:.red)
+        HStack {
+          PolyView(polyAngle: viewModel.poly2Angle,
+                   polyColor:.green)
+          PolyView(polyAngle: viewModel.poly3Angle,
+                   polyColor:.blue)
+        }
       }
       .padding()
       .onAppear{

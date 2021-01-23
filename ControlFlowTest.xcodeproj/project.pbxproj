@@ -12,6 +12,8 @@
 		3567C52125B602A3004C6FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3567C52025B602A3004C6FA8 /* Assets.xcassets */; };
 		3567C52425B602A3004C6FA8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3567C52325B602A3004C6FA8 /* Preview Assets.xcassets */; };
 		3567C52D25B603B8004C6FA8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3567C52C25B603B8004C6FA8 /* ContentViewModel.swift */; };
+		35BD17F225B739BC00D666EE /* PolyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD17F125B739BC00D666EE /* PolyView.swift */; };
+		35BD17F525B739F200D666EE /* PolyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD17F425B739F200D666EE /* PolyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		3567C52325B602A3004C6FA8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3567C52525B602A3004C6FA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3567C52C25B603B8004C6FA8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		35BD17F125B739BC00D666EE /* PolyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyView.swift; sourceTree = "<group>"; };
+		35BD17F425B739F200D666EE /* PolyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				3567C51C25B602A0004C6FA8 /* ControlFlowTestApp.swift */,
 				3567C51E25B602A0004C6FA8 /* ContentView.swift */,
 				3567C52C25B603B8004C6FA8 /* ContentViewModel.swift */,
+				35BD17F125B739BC00D666EE /* PolyView.swift */,
+				35BD17F425B739F200D666EE /* PolyViewModel.swift */,
 				3567C52025B602A3004C6FA8 /* Assets.xcassets */,
 				3567C52525B602A3004C6FA8 /* Info.plist */,
 				3567C52225B602A3004C6FA8 /* Preview Content */,
@@ -141,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35BD17F525B739F200D666EE /* PolyViewModel.swift in Sources */,
+				35BD17F225B739BC00D666EE /* PolyView.swift in Sources */,
 				3567C51F25B602A0004C6FA8 /* ContentView.swift in Sources */,
 				3567C51D25B602A0004C6FA8 /* ControlFlowTestApp.swift in Sources */,
 				3567C52D25B603B8004C6FA8 /* ContentViewModel.swift in Sources */,
@@ -273,6 +281,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ControlFlowTest/Preview Content\"";
+				DEVELOPMENT_TEAM = N725NP25J2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ControlFlowTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -294,6 +303,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ControlFlowTest/Preview Content\"";
+				DEVELOPMENT_TEAM = N725NP25J2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ControlFlowTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

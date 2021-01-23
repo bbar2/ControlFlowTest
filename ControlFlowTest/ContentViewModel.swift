@@ -12,11 +12,19 @@ class ContentViewModel : ObservableObject {
   
   var timer : Timer? = nil
   
+  var poly1Angle:Angle = Angle(degrees: 0.0)
+  var poly2Angle:Angle = Angle(degrees: 0.0)
+  var poly3Angle:Angle = Angle(degrees: 0.0)
+
   func increment() {
     count+=1
+    poly1Angle = Angle(degrees:1.0*Double(count))
+    poly2Angle = -poly1Angle
+    poly3Angle = Angle(degrees:2.0*poly2Angle.degrees)
   }
 
   func reset() {
+    print("reset")
     count = 0;
   }
   
@@ -25,8 +33,9 @@ class ContentViewModel : ObservableObject {
   }
 
   func viewAppear() {
+    print("viewAppear")
     timer = Timer.scheduledTimer(
-      withTimeInterval: 0.25,
+      withTimeInterval: 1.0/60.0,
       repeats: true) {_ in
         self.timerFunc()
       }
@@ -34,6 +43,7 @@ class ContentViewModel : ObservableObject {
   
       
   func viewDisappear() {
+    print("viewDisappear")
     timer?.invalidate()
   }
   
