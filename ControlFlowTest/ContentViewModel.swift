@@ -9,6 +9,7 @@ import SwiftUI
 
 class ContentViewModel : ObservableObject {
   @Published var count = 0
+  var acceleration = 0.0;
   
   var timer : Timer? = nil
   
@@ -18,14 +19,17 @@ class ContentViewModel : ObservableObject {
 
   func increment() {
     count+=1
-    poly1Angle = Angle(degrees:1.0*Double(count))
-    poly2Angle = -poly1Angle
-    poly3Angle = Angle(degrees:2.0*poly2Angle.degrees)
+    acceleration = min (1.0, acceleration+1.0/120.0)
+    let angleDegrees = Double(count)*acceleration;
+    poly1Angle = Angle(degrees:angleDegrees)
+    poly2Angle = Angle(degrees:-1.0*angleDegrees)
+    poly3Angle = Angle(degrees:-2.0*angleDegrees)
   }
 
   func reset() {
     print("reset")
-    count = 0;
+    count = 0
+    acceleration = 0.0
   }
   
   private func timerFunc() {

@@ -10,6 +10,7 @@ import SwiftUI
 struct PolyView: View {
   var polyAngle:Angle
   var polyColor:Color
+  var polyPoints:Int = 6
   var polyViewModel = PolyViewModel()
 
   var body: some View {
@@ -21,12 +22,12 @@ struct PolyView: View {
 
         // Move to last point
         path.move(to: CGPoint(
-                    x:polyViewModel.rotatedShape[polyViewModel.numCorners-1].x*scale,
-                    y:polyViewModel.rotatedShape[polyViewModel.numCorners-1].y*scale)
+                    x:polyViewModel.rotatedShape[polyViewModel.polyPoints-1].x*scale,
+                    y:polyViewModel.rotatedShape[polyViewModel.polyPoints-1].y*scale)
         )
         
         // Draw lines to each point
-        for i in 0..<polyViewModel.numCorners {
+        for i in 0..<polyViewModel.polyPoints {
           path.addLine(to: CGPoint(
                         x:polyViewModel.rotatedShape[i].x*scale,
                         y:polyViewModel.rotatedShape[i].y*scale)
